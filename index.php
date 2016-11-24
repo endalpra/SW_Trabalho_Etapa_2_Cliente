@@ -40,18 +40,18 @@
 
             curl_close($curl); //encerra classe
             //echo $response;
-        } 
+        }
         //Adicionar registro no banco
-        else if (isset($_REQUEST['titulo']) && isset($_REQUEST['editora']) && isset($_REQUEST['qtd_pag']) && empty($_REQUEST['id'])) {
-               //Cria a array com os dados recebido, sendo q o ID é gerado pelo WS
-                $postArray = array(
-                    "titulo" => $_POST['titulo'],
-                    "editora" => $_POST['editora'],
-                    "qtd_paginas" => $_POST['qtd_pag'],
-                );
-                // Converte os dados para o formato jSon
-                $json = json_encode($postArray);
-          
+        else if (isset($_REQUEST['titulo']) && isset($_REQUEST['editora']) && isset($_REQUEST['qtd_pag']) && $_POST['id'] == 0) {
+            //Cria a array com os dados recebido, sendo q o ID é gerado pelo WS
+            $postArray = array(
+                "titulo" => $_POST['titulo'],
+                "editora" => $_POST['editora'],
+                "qtd_paginas" => $_POST['qtd_pag'],
+            );
+            // Converte os dados para o formato jSon
+            $json = json_encode($postArray);
+
             //Inicia a biblioteca cURL do PHP
             $curl = curl_init();
             curl_setopt_array($curl, array(
@@ -72,22 +72,20 @@
             $err = curl_error($curl); //recebe o erro da classe ou WS
 
             curl_close($curl); //Encerra a biblioteca
-            
-            
         }
-        
+
         //Editar registro
-        else if (isset($_REQUEST['titulo']) && isset($_REQUEST['editora']) && isset($_REQUEST['qtd_pag']) && !empty ($_REQUEST['id'])) {
+        else if (isset($_REQUEST['titulo']) && isset($_REQUEST['editora']) && isset($_REQUEST['qtd_pag'])) {
             //Cria a array com os dados recebido, sendo q o ID é gerado pelo WS
-                $postArray = array(
-                    "id" => $_POST['id'],
-                    "titulo" => $_POST['titulo'],
-                    "editora" => $_POST['editora'],
-                    "qtd_paginas" => $_POST['qtd_pag'],
-                );
-                // Converte os dados para o formato jSon
-                $json = json_encode($postArray);
-          
+            $postArray = array(
+                "id" => $_POST['id'],
+                "titulo" => $_POST['titulo'],
+                "editora" => $_POST['editora'],
+                "qtd_paginas" => $_POST['qtd_pag'],
+            );
+            // Converte os dados para o formato jSon
+            $json = json_encode($postArray);
+
             //Inicia a biblioteca cURL do PHP
             $curl = curl_init();
             curl_setopt_array($curl, array(
@@ -108,7 +106,6 @@
             $err = curl_error($curl); //recebe o erro da classe ou WS
 
             curl_close($curl); //Encerra a biblioteca
-            
         }
         ?>
     </body>

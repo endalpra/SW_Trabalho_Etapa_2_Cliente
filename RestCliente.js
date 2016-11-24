@@ -5,15 +5,14 @@ function listar(){
         dataType: 'json',
         data: {},
         success: function (data, textStatus, jqXHR) {
-            //var lista = JSON.stringify(data); CONVERTE JSON / STRING
-            //jQuery.parseJSON(data) CONVERTE STRNG / JSON
             html = "";
             for(i=0 ; i < data.length ;i++){
                 html += "<tr><td>"+ data[i].id + "</td>";
                 html += "<td>"+ data[i].titulo + "</td>";
                 html += "<td>"+ data[i].editora + "</td>";
                 html += "<td>"+ data[i].qtd_paginas + "</td>";
-                html += "<td><a href='?idDel="+data[i].id+"'>Excluir</a></td></tr>";
+                html += "<td><a href='http://localhost/SW_Trabalho_Etapa_2_Cliente/formulario.php?id="+data[i].id+"&&t="+data[i].titulo+"&&e="+data[i].editora+"&&q="+data[i].qtd_paginas+"'>Alterar</a>";
+                html += " | <a href='?idDel="+data[i].id+"'>Excluir</a></td></tr>";
             }
             $("#tabela").html(html);
             console.log(data);
