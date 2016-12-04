@@ -2,12 +2,10 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title></title>
-        <script src="RestCliente.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    </head>
+        <title></title></head>
     <body>
         <?php
+        //Se possui id na url então é uma edição.. Recupera os campos e insere no formulário 
             if(isset($_GET['id'])){
                 $titulo = $_GET['t'];
                 $editora = $_GET['e'];

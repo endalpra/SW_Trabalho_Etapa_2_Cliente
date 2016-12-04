@@ -16,7 +16,8 @@
             <th>Ações</th>
             <tbody id="tabela"></tbody>
         </table>
-        <a href="formulario.php">Novo</a>
+        </br>
+        <a href="formulario.php">Novo registro</a>
         <?php
         if (isset($_GET['idDel'])) {
             //Inicia a biblioteca cURL do PHP
